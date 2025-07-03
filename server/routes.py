@@ -12,6 +12,7 @@ def index():
     read = bool(request.args.get('read'))
 
     if name:
+        name = f"%{name}%"  # Add wildcard characters for the LIKE operator
         cursor.execute(
             "SELECT * FROM books WHERE name LIKE %s", name
         )
